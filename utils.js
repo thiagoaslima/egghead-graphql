@@ -13,6 +13,18 @@ function curry(fn, context = null, arity, args) {
     };
 }
 
+const log = curry((...args) => {
+    args = args.map(val => typeof val === 'object' ? JSON.stringify(val) : val);
+    console.log(args);
+}, console);
+
+const warn = curry((...args) => {
+    args = args.map(val => typeof val === 'object' ? JSON.stringify(val) : val);
+    console.warn(...args);
+}, console);
+
 module.exports = {
-    curry
+    curry,
+    log,
+    warn
 }

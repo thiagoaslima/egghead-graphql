@@ -1,11 +1,7 @@
 'use strict';
 
 const { graphql, buildSchema } = require('graphql');
-const { curry } = require('../utils');
-
-function f(a, b, c) {
-    console.log(a, b, c);
-}
+const { log } = require('../utils');
 
 const schema = buildSchema(`
     type Query {
@@ -28,5 +24,5 @@ const query = `
 `;
 
 graphql(schema, query, resolvers)
-    .then(result => console.log(result))
-    .catch(err => console.error(err));
+    .then(log)
+    .catch(log);
